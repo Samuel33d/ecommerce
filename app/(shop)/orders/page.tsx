@@ -15,18 +15,18 @@ import { HiOutlineClipboardList } from 'react-icons/hi';
 function OrdersContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading: authLoading } = useAuth();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
 
   const success = searchParams.get('success');
 
   useEffect(() => {
+    if (authLoading) return;
     if (!isAuthenticated()) {
       router.push('/login');
-      return;
     }
-  }, [isAuthenticated, router]);
+  }, [authLoading, isAuthenticated, router]);
 
   useEffect(() => {
     if (success === 'true') {
@@ -35,6 +35,8 @@ function OrdersContent() {
   }, [success]);
 
   useEffect(() => {
+    if (authLoading) return;
+    if (!isAuthenticated()) return;
     api
       .get<PaginatedResponse<Order>>('/orders?limit=50')
       .then((data) => {
@@ -44,7 +46,7 @@ function OrdersContent() {
       .catch(() => {
         setLoading(false);
       });
-  }, []);
+  }, [authLoading, isAuthenticated]);
 
   if (loading) {
     return (
