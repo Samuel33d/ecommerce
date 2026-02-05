@@ -87,7 +87,7 @@ function HomeContent() {
       params.delete(key);
     }
     if (key !== 'page') params.delete('page');
-    router.push(`/?${params.toString()}`);
+    router.push(`/?${params.toString()}`, { scroll: false });
   };
 
   return (
@@ -176,7 +176,7 @@ function HomeContent() {
               params.set('sort', s);
               params.set('order', o);
               params.delete('page');
-              router.push(`/?${params.toString()}`);
+              router.push(`/?${params.toString()}`, { scroll: false });
             }}
             className="px-3 py-2 text-sm border border-surface-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white text-ink-700"
           >
