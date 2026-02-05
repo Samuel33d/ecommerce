@@ -31,9 +31,24 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         toastOptions={{
           duration: 3000,
           style: {
-            background: '#fff',
-            color: '#111827',
-            border: '1px solid #e5e7eb',
+            background: '#2f2a25',
+            color: '#faf9f7',
+            border: '1px solid #59514a',
+            borderRadius: '12px',
+            fontFamily: 'var(--font-body)',
+            fontSize: '14px',
+          },
+          success: {
+            iconTheme: {
+              primary: '#c06a1f',
+              secondary: '#faf9f7',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#dc2626',
+              secondary: '#faf9f7',
+            },
           },
         }}
       />

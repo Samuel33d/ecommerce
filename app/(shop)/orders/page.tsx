@@ -63,7 +63,7 @@ function OrdersContent() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">My Orders</h1>
+      <h1 className="text-2xl font-bold font-display text-ink-900 mb-6">My Orders</h1>
 
       {orders.length === 0 ? (
         <EmptyState
@@ -73,7 +73,7 @@ function OrdersContent() {
           action={
             <Link
               href="/"
-              className="text-sm font-medium text-primary-600 hover:text-primary-700"
+              className="text-sm font-medium text-primary-700 hover:text-primary-800"
             >
               Start Shopping
             </Link>
@@ -84,23 +84,23 @@ function OrdersContent() {
           {orders.map((order) => (
             <div
               key={order.id}
-              className="bg-white rounded-lg border border-gray-200 overflow-hidden"
+              className="bg-white rounded-2xl shadow-soft overflow-hidden"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between px-6 py-4 bg-gray-50 border-b">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between px-6 py-4 bg-surface-100 border-b border-surface-200">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
                   <div>
-                    <p className="text-xs text-gray-500">Order ID</p>
-                    <p className="text-sm font-mono font-medium">
+                    <p className="text-xs text-ink-500">Order ID</p>
+                    <p className="text-sm font-mono font-medium text-ink-600">
                       {order.id.slice(0, 12)}...
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500">Date</p>
-                    <p className="text-sm">{formatDate(order.createdAt)}</p>
+                    <p className="text-xs text-ink-500">Date</p>
+                    <p className="text-sm text-ink-700">{formatDate(order.createdAt)}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500">Total</p>
-                    <p className="text-sm font-bold">
+                    <p className="text-xs text-ink-500">Total</p>
+                    <p className="text-sm font-bold text-ink-900">
                       {formatPrice(order.total)}
                     </p>
                   </div>
@@ -120,17 +120,17 @@ function OrdersContent() {
                       key={item.id}
                       className="flex justify-between text-sm"
                     >
-                      <span className="text-gray-600">
+                      <span className="text-ink-600">
                         {item.product?.name || 'Product'} x {item.quantity}
                       </span>
-                      <span className="font-medium">
+                      <span className="font-medium text-ink-900">
                         {formatPrice(item.price * item.quantity)}
                       </span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 pt-3 border-t flex justify-between text-sm">
-                  <span className="text-gray-500">
+                <div className="mt-3 pt-3 border-t border-surface-200 flex justify-between text-sm">
+                  <span className="text-ink-500">
                     Ship to: {order.shippingAddress}, {order.shippingCity},{' '}
                     {order.shippingCountry} {order.shippingZip}
                   </span>

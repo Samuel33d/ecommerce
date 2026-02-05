@@ -155,7 +155,7 @@ export default function AdminProductsPage() {
   return (
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Products</h1>
+        <h1 className="text-2xl font-bold font-display text-ink-900">Products</h1>
         <Button onClick={openCreate}>
           <HiOutlinePlus className="w-4 h-4 mr-1" />
           Add Product
@@ -172,7 +172,7 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-soft overflow-hidden">
         {loading ? (
           <div className="p-6">
             <TableSkeleton rows={5} />
@@ -181,36 +181,36 @@ export default function AdminProductsPage() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                <tr className="border-b border-surface-200 bg-surface-100">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Product
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Category
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Price
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Stock
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Status
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Date
                   </th>
-                  <th className="text-right px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-right px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {products.map((product) => (
-                  <tr key={product.id} className="border-b last:border-0">
+                  <tr key={product.id} className="border-b border-surface-200 last:border-0">
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                        <div className="w-10 h-10 bg-surface-100 rounded-lg overflow-hidden flex-shrink-0">
                           {product.images[0] && (
                             <img
                               src={product.images[0]}
@@ -220,7 +220,7 @@ export default function AdminProductsPage() {
                           )}
                         </div>
                         <div className="min-w-0">
-                          <p className="text-sm font-medium text-gray-900 truncate">
+                          <p className="text-sm font-medium text-ink-900 truncate">
                             {product.name}
                           </p>
                           {product.isFeatured && (
@@ -229,13 +229,13 @@ export default function AdminProductsPage() {
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-500">
+                    <td className="px-4 py-3 text-sm text-ink-500">
                       {product.category?.name}
                     </td>
-                    <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                    <td className="px-4 py-3 text-sm font-medium text-ink-900">
                       {formatPrice(product.price)}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-500">
+                    <td className="px-4 py-3 text-sm text-ink-500">
                       {product.stock}
                     </td>
                     <td className="px-4 py-3">
@@ -243,26 +243,26 @@ export default function AdminProductsPage() {
                         className={`inline-flex px-2 py-0.5 text-xs font-semibold rounded-full ${
                           product.isActive
                             ? 'bg-green-100 text-green-800'
-                            : 'bg-gray-100 text-gray-800'
+                            : 'bg-surface-100 text-ink-800'
                         }`}
                       >
                         {product.isActive ? 'Active' : 'Inactive'}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-500">
+                    <td className="px-4 py-3 text-sm text-ink-500">
                       {formatDate(product.createdAt)}
                     </td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-1">
                         <button
                           onClick={() => openEdit(product)}
-                          className="p-1.5 text-gray-400 hover:text-primary-600 rounded"
+                          className="p-1.5 text-ink-400 hover:text-primary-700 rounded"
                         >
                           <HiOutlinePencil className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleDelete(product.id)}
-                          className="p-1.5 text-gray-400 hover:text-red-600 rounded"
+                          className="p-1.5 text-ink-400 hover:text-red-600 rounded"
                         >
                           <HiOutlineTrash className="w-4 h-4" />
                         </button>
@@ -274,7 +274,7 @@ export default function AdminProductsPage() {
                   <tr>
                     <td
                       colSpan={7}
-                      className="px-4 py-8 text-center text-sm text-gray-500"
+                      className="px-4 py-8 text-center text-sm text-ink-500"
                     >
                       No products found
                     </td>
@@ -287,7 +287,7 @@ export default function AdminProductsPage() {
 
         {/* Pagination */}
         {meta.totalPages > 1 && (
-          <div className="flex justify-center gap-2 p-4 border-t">
+          <div className="flex justify-center gap-2 p-4 border-t border-surface-200">
             {Array.from({ length: meta.totalPages }, (_, i) => i + 1).map(
               (p) => (
                 <button
@@ -295,8 +295,8 @@ export default function AdminProductsPage() {
                   onClick={() => fetchProducts(p)}
                   className={`px-3 py-1.5 text-sm rounded-lg ${
                     p === meta.page
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      ? 'bg-ink-950 text-white'
+                      : 'bg-surface-100 text-ink-600 hover:bg-surface-200'
                   }`}
                 >
                   {p}
@@ -321,14 +321,14 @@ export default function AdminProductsPage() {
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-ink-700 mb-1">
               Description
             </label>
             <textarea
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+              className="w-full rounded-xl border border-surface-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -359,7 +359,7 @@ export default function AdminProductsPage() {
             onChange={(e) => setForm({ ...form, stock: e.target.value })}
           />
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-ink-700 mb-1">
               Category
             </label>
             <select
@@ -367,7 +367,7 @@ export default function AdminProductsPage() {
               onChange={(e) =>
                 setForm({ ...form, categoryId: e.target.value })
               }
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+              className="w-full rounded-xl border border-surface-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
             >
               <option value="">Select category</option>
               {categories.map((cat) => (
@@ -392,9 +392,9 @@ export default function AdminProductsPage() {
                 onChange={(e) =>
                   setForm({ ...form, isActive: e.target.checked })
                 }
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                className="rounded-md border-surface-300 text-ink-900"
               />
-              <span className="text-sm text-gray-700">Active</span>
+              <span className="text-sm text-ink-700">Active</span>
             </label>
             <label className="flex items-center gap-2">
               <input
@@ -403,9 +403,9 @@ export default function AdminProductsPage() {
                 onChange={(e) =>
                   setForm({ ...form, isFeatured: e.target.checked })
                 }
-                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                className="rounded-md border-surface-300 text-ink-900"
               />
-              <span className="text-sm text-gray-700">Featured</span>
+              <span className="text-sm text-ink-700">Featured</span>
             </label>
           </div>
           <div className="flex justify-end gap-3 pt-2">

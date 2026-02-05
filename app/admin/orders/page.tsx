@@ -73,7 +73,7 @@ export default function AdminOrdersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Orders</h1>
+      <h1 className="text-2xl font-bold font-display text-ink-900 mb-6">Orders</h1>
 
       {/* Filters */}
       <div className="flex gap-2 mb-4 overflow-x-auto">
@@ -81,8 +81,8 @@ export default function AdminOrdersPage() {
           onClick={() => setFilterStatus('')}
           className={`px-3 py-1.5 text-sm rounded-lg whitespace-nowrap ${
             !filterStatus
-              ? 'bg-primary-600 text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              ? 'bg-ink-950 text-white'
+              : 'bg-surface-100 text-ink-600 hover:bg-surface-200'
           }`}
         >
           All
@@ -93,8 +93,8 @@ export default function AdminOrdersPage() {
             onClick={() => setFilterStatus(status)}
             className={`px-3 py-1.5 text-sm rounded-lg whitespace-nowrap ${
               filterStatus === status
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-ink-950 text-white'
+                : 'bg-surface-100 text-ink-600 hover:bg-surface-200'
             }`}
           >
             {status}
@@ -103,7 +103,7 @@ export default function AdminOrdersPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-soft overflow-hidden">
         {loading ? (
           <div className="p-6">
             <TableSkeleton rows={5} />
@@ -112,48 +112,48 @@ export default function AdminOrdersPage() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                <tr className="border-b border-surface-200 bg-surface-100">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Order
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Customer
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Items
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Total
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Status
                   </th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-left px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Date
                   </th>
-                  <th className="text-right px-4 py-3 text-xs font-medium text-gray-500 uppercase">
+                  <th className="text-right px-4 py-3 text-xs font-medium text-ink-500 uppercase">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {orders.map((order) => (
-                  <tr key={order.id} className="border-b last:border-0">
-                    <td className="px-4 py-3 text-sm font-mono text-gray-600">
+                  <tr key={order.id} className="border-b border-surface-200 last:border-0">
+                    <td className="px-4 py-3 text-sm font-mono text-ink-500">
                       {order.id.slice(0, 8)}...
                     </td>
                     <td className="px-4 py-3">
-                      <p className="text-sm text-gray-900">
+                      <p className="text-sm text-ink-900">
                         {order.user?.firstName} {order.user?.lastName}
                       </p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-ink-500">
                         {order.user?.email}
                       </p>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-500">
+                    <td className="px-4 py-3 text-sm text-ink-500">
                       {order.items.length} item{order.items.length !== 1 ? 's' : ''}
                     </td>
-                    <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                    <td className="px-4 py-3 text-sm font-medium text-ink-900">
                       {formatPrice(order.total)}
                     </td>
                     <td className="px-4 py-3">
@@ -173,7 +173,7 @@ export default function AdminOrdersPage() {
                         ))}
                       </select>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-500">
+                    <td className="px-4 py-3 text-sm text-ink-500">
                       {formatDate(order.createdAt)}
                     </td>
                     <td className="px-4 py-3 text-right">
@@ -191,7 +191,7 @@ export default function AdminOrdersPage() {
                   <tr>
                     <td
                       colSpan={7}
-                      className="px-4 py-8 text-center text-sm text-gray-500"
+                      className="px-4 py-8 text-center text-sm text-ink-500"
                     >
                       No orders found
                     </td>
@@ -203,7 +203,7 @@ export default function AdminOrdersPage() {
         )}
 
         {meta.totalPages > 1 && (
-          <div className="flex justify-center gap-2 p-4 border-t">
+          <div className="flex justify-center gap-2 p-4 border-t border-surface-200">
             {Array.from({ length: meta.totalPages }, (_, i) => i + 1).map(
               (p) => (
                 <button
@@ -211,8 +211,8 @@ export default function AdminOrdersPage() {
                   onClick={() => fetchOrders(p)}
                   className={`px-3 py-1.5 text-sm rounded-lg ${
                     p === meta.page
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      ? 'bg-ink-950 text-white'
+                      : 'bg-surface-100 text-ink-600 hover:bg-surface-200'
                   }`}
                 >
                   {p}
@@ -233,16 +233,16 @@ export default function AdminOrdersPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <p className="text-gray-500">Customer</p>
-                <p className="font-medium">
+                <p className="text-ink-500">Customer</p>
+                <p className="font-medium text-ink-900">
                   {selectedOrder.user?.firstName} {selectedOrder.user?.lastName}
                 </p>
-                <p className="text-gray-500">{selectedOrder.user?.email}</p>
+                <p className="text-ink-500">{selectedOrder.user?.email}</p>
               </div>
               <div>
-                <p className="text-gray-500">Shipping</p>
-                <p className="font-medium">{selectedOrder.shippingAddress}</p>
-                <p className="text-gray-500">
+                <p className="text-ink-500">Shipping</p>
+                <p className="font-medium text-ink-900">{selectedOrder.shippingAddress}</p>
+                <p className="text-ink-500">
                   {selectedOrder.shippingCity}, {selectedOrder.shippingCountry}{' '}
                   {selectedOrder.shippingZip}
                 </p>
@@ -250,17 +250,17 @@ export default function AdminOrdersPage() {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500 mb-2">Items</p>
+              <p className="text-sm text-ink-500 mb-2">Items</p>
               <div className="space-y-2">
                 {selectedOrder.items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex justify-between text-sm bg-gray-50 px-3 py-2 rounded"
+                    className="flex justify-between text-sm bg-surface-50 px-3 py-2 rounded"
                   >
-                    <span>
+                    <span className="text-ink-700">
                       {item.product?.name || 'Product'} x {item.quantity}
                     </span>
-                    <span className="font-medium">
+                    <span className="font-medium text-ink-900">
                       {formatPrice(item.price * item.quantity)}
                     </span>
                   </div>
@@ -268,17 +268,17 @@ export default function AdminOrdersPage() {
               </div>
             </div>
 
-            <div className="flex justify-between items-center pt-2 border-t">
-              <span className="font-semibold">Total</span>
-              <span className="text-lg font-bold">
+            <div className="flex justify-between items-center pt-2 border-t border-surface-200">
+              <span className="font-semibold text-ink-900">Total</span>
+              <span className="text-lg font-bold text-ink-900">
                 {formatPrice(selectedOrder.total)}
               </span>
             </div>
 
             {selectedOrder.notes && (
               <div>
-                <p className="text-sm text-gray-500">Notes</p>
-                <p className="text-sm">{selectedOrder.notes}</p>
+                <p className="text-sm text-ink-500">Notes</p>
+                <p className="text-sm text-ink-700">{selectedOrder.notes}</p>
               </div>
             )}
           </div>

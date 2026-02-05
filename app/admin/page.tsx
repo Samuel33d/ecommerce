@@ -32,10 +32,10 @@ export default function AdminDashboardPage() {
         <Skeleton className="h-8 w-48 mb-6" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {Array.from({ length: 4 }).map((_, i) => (
-            <Skeleton key={i} className="h-28 rounded-xl" />
+            <Skeleton key={i} className="h-28 rounded-2xl" />
           ))}
         </div>
-        <Skeleton className="h-64 rounded-xl" />
+        <Skeleton className="h-64 rounded-2xl" />
       </div>
     );
   }
@@ -71,22 +71,22 @@ export default function AdminDashboardPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Dashboard</h1>
+      <h1 className="text-2xl font-bold font-display text-ink-900 mb-6">Dashboard</h1>
 
       {/* Stat cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {statCards.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white rounded-xl border border-gray-200 p-5"
+            className="bg-white rounded-2xl shadow-soft p-5"
           >
             <div className="flex items-center gap-3">
-              <div className={`p-2.5 rounded-lg ${stat.color}`}>
+              <div className={`p-2.5 rounded-xl ${stat.color}`}>
                 <stat.icon className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">{stat.label}</p>
-                <p className="text-xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-sm text-ink-500">{stat.label}</p>
+                <p className="text-xl font-bold text-ink-900">{stat.value}</p>
               </div>
             </div>
           </div>
@@ -94,43 +94,43 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Recent orders */}
-      <div className="bg-white rounded-xl border border-gray-200">
-        <div className="px-6 py-4 border-b">
-          <h2 className="text-lg font-semibold text-gray-900">
+      <div className="bg-white rounded-2xl shadow-soft">
+        <div className="px-6 py-4 border-b border-surface-200">
+          <h2 className="text-lg font-semibold text-ink-900">
             Recent Orders
           </h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b bg-gray-50">
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+              <tr className="border-b border-surface-200 bg-surface-100">
+                <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase">
                   Order
                 </th>
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase">
                   Customer
                 </th>
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase">
                   Total
                 </th>
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase">
                   Status
                 </th>
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase">
                   Date
                 </th>
               </tr>
             </thead>
             <tbody>
               {stats.recentOrders.map((order) => (
-                <tr key={order.id} className="border-b last:border-0">
-                  <td className="px-6 py-4 text-sm font-mono text-gray-600">
+                <tr key={order.id} className="border-b border-surface-200 last:border-0">
+                  <td className="px-6 py-4 text-sm font-mono text-ink-500">
                     {order.id.slice(0, 8)}...
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">
+                  <td className="px-6 py-4 text-sm text-ink-900">
                     {order.user.firstName} {order.user.lastName}
                   </td>
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                  <td className="px-6 py-4 text-sm font-medium text-ink-900">
                     {formatPrice(order.total)}
                   </td>
                   <td className="px-6 py-4">
@@ -142,7 +142,7 @@ export default function AdminDashboardPage() {
                       {order.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500">
+                  <td className="px-6 py-4 text-sm text-ink-500">
                     {formatDate(order.createdAt)}
                   </td>
                 </tr>
@@ -151,7 +151,7 @@ export default function AdminDashboardPage() {
                 <tr>
                   <td
                     colSpan={5}
-                    className="px-6 py-8 text-center text-sm text-gray-500"
+                    className="px-6 py-8 text-center text-sm text-ink-500"
                   >
                     No orders yet
                   </td>

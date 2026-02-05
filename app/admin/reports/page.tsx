@@ -119,8 +119,8 @@ export default function AdminReportsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Reports</h1>
-          <p className="text-sm text-gray-500 mt-1">
+          <h1 className="text-2xl font-bold text-ink-950 font-display">Reports</h1>
+          <p className="text-sm text-ink-500 mt-1">
             Generate and download sales reports
           </p>
         </div>
@@ -133,11 +133,11 @@ export default function AdminReportsPage() {
       </div>
 
       {/* Date range selection */}
-      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 mb-6">
+      <div className="bg-white rounded-2xl shadow-soft p-4 sm:p-6 mb-6">
         {/* Presets */}
         <div className="flex items-center gap-2 mb-4">
-          <HiOutlineCalendar className="w-4 h-4 text-gray-400 hidden sm:block" />
-          <h2 className="text-sm font-semibold text-gray-700">Quick Select</h2>
+          <HiOutlineCalendar className="w-4 h-4 text-ink-400 hidden sm:block" />
+          <h2 className="text-sm font-semibold text-ink-700">Quick Select</h2>
         </div>
         <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-6">
           {presets.map((preset) => (
@@ -146,10 +146,10 @@ export default function AdminReportsPage() {
               onClick={() => handlePreset(preset.label, preset.getDates)}
               disabled={loading}
               className={cn(
-                'px-4 py-2 text-sm rounded-lg border transition-colors disabled:opacity-50',
+                'px-4 py-2 text-sm rounded-xl border transition-all duration-200 disabled:opacity-50',
                 activePreset === preset.label
-                  ? 'bg-primary-600 text-white border-primary-600'
-                  : 'border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400',
+                  ? 'bg-ink-950 text-white border-ink-950 shadow-soft'
+                  : 'border-surface-300 text-ink-700 hover:bg-surface-100 hover:border-surface-400',
               )}
             >
               {preset.label}
@@ -158,8 +158,8 @@ export default function AdminReportsPage() {
         </div>
 
         {/* Custom range */}
-        <div className="border-t border-gray-100 pt-5">
-          <h2 className="text-sm font-semibold text-gray-700 mb-3">
+        <div className="border-t border-surface-200 pt-5">
+          <h2 className="text-sm font-semibold text-ink-700 mb-3">
             Custom Range
           </h2>
           <form
@@ -167,7 +167,7 @@ export default function AdminReportsPage() {
             className="flex flex-col sm:flex-row sm:items-end gap-3"
           >
             <div className="flex-1 min-w-0">
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs text-ink-500 mb-1.5">
                 Start Date
               </label>
               <input
@@ -177,12 +177,12 @@ export default function AdminReportsPage() {
                   setStartDate(e.target.value);
                   setActivePreset(null);
                 }}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full border border-surface-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-500 transition-all"
                 required
               />
             </div>
             <div className="flex-1 min-w-0">
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs text-ink-500 mb-1.5">
                 End Date
               </label>
               <input
@@ -192,7 +192,7 @@ export default function AdminReportsPage() {
                   setEndDate(e.target.value);
                   setActivePreset(null);
                 }}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full border border-surface-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-500 transition-all"
                 required
               />
             </div>
@@ -205,7 +205,7 @@ export default function AdminReportsPage() {
 
       {/* Error */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 text-sm">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-6 text-sm">
           {error}
         </div>
       )}
@@ -215,14 +215,14 @@ export default function AdminReportsPage() {
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {Array.from({ length: 3 }).map((_, i) => (
-              <Skeleton key={i} className="h-24 rounded-xl" />
+              <Skeleton key={i} className="h-24 rounded-2xl" />
             ))}
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden p-6 mb-6">
+          <div className="bg-white rounded-2xl shadow-soft overflow-hidden p-6 mb-6">
             <Skeleton className="h-5 w-40 mb-4" />
             <TableSkeleton rows={3} />
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden p-6">
+          <div className="bg-white rounded-2xl shadow-soft overflow-hidden p-6">
             <Skeleton className="h-5 w-48 mb-4" />
             <TableSkeleton rows={4} />
           </div>
@@ -231,14 +231,14 @@ export default function AdminReportsPage() {
 
       {/* Empty state before generating */}
       {!report && !loading && !error && (
-        <div className="bg-white rounded-xl border border-gray-200 p-8 sm:p-16 text-center">
-          <div className="mx-auto w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-4">
-            <HiOutlineChartBar className="w-6 h-6 text-gray-400" />
+        <div className="bg-white rounded-2xl shadow-soft p-8 sm:p-16 text-center">
+          <div className="mx-auto w-12 h-12 bg-surface-100 rounded-xl flex items-center justify-center mb-4">
+            <HiOutlineChartBar className="w-6 h-6 text-ink-400" />
           </div>
-          <h3 className="text-base font-semibold text-gray-900 mb-1">
+          <h3 className="text-base font-semibold text-ink-900 font-display mb-1">
             No report generated yet
           </h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-ink-500">
             Select a date range above to generate a sales report
           </p>
         </div>
@@ -249,7 +249,7 @@ export default function AdminReportsPage() {
         <>
           {/* Date range badge */}
           <div className="flex items-center gap-2 mb-4">
-            <span className="inline-flex items-center gap-1.5 text-xs font-medium bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full">
+            <span className="inline-flex items-center gap-1.5 text-xs font-medium bg-primary-50 text-primary-800 px-3 py-1.5 rounded-full">
               <HiOutlineCalendar className="w-3.5 h-3.5" />
               {report.summary.startDate} &mdash; {report.summary.endDate}
             </span>
@@ -279,15 +279,15 @@ export default function AdminReportsPage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="bg-white rounded-xl border border-gray-200 p-5"
+                className="bg-white rounded-2xl shadow-soft p-5"
               >
                 <div className="flex items-center gap-3">
-                  <div className={`p-2.5 rounded-lg ${stat.color}`}>
+                  <div className={`p-2.5 rounded-xl ${stat.color}`}>
                     <stat.icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">{stat.label}</p>
-                    <p className="text-xl font-bold text-gray-900">
+                    <p className="text-sm text-ink-500">{stat.label}</p>
+                    <p className="text-xl font-bold text-ink-950">
                       {stat.value}
                     </p>
                   </div>
@@ -300,14 +300,14 @@ export default function AdminReportsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             {/* Orders by Status */}
             {report.ordersByStatus.length > 0 && (
-              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <div className="px-4 sm:px-6 py-4 border-b">
-                  <h2 className="text-base font-semibold text-gray-900">
+              <div className="bg-white rounded-2xl shadow-soft overflow-hidden">
+                <div className="px-4 sm:px-6 py-4 border-b border-surface-200">
+                  <h2 className="text-base font-semibold text-ink-950 font-display">
                     Orders by Status
                   </h2>
                 </div>
                 {/* Mobile: card layout */}
-                <div className="sm:hidden divide-y divide-gray-100">
+                <div className="sm:hidden divide-y divide-surface-100">
                   {report.ordersByStatus.map((row) => (
                     <div
                       key={row.status}
@@ -319,11 +319,11 @@ export default function AdminReportsPage() {
                         >
                           {row.status}
                         </span>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-sm text-ink-500">
                           {row.count} order{row.count !== 1 ? 's' : ''}
                         </span>
                       </div>
-                      <span className="text-sm font-medium text-gray-900">
+                      <span className="text-sm font-medium text-ink-900">
                         {formatPrice(row.revenue)}
                       </span>
                     </div>
@@ -333,21 +333,21 @@ export default function AdminReportsPage() {
                 <div className="hidden sm:block overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b bg-gray-50">
-                        <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                      <tr className="border-b bg-surface-100">
+                        <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                           Status
                         </th>
-                        <th className="text-center px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                        <th className="text-center px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                           Count
                         </th>
-                        <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                        <th className="text-right px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                           Revenue
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       {report.ordersByStatus.map((row) => (
-                        <tr key={row.status} className="border-b last:border-0">
+                        <tr key={row.status} className="border-b border-surface-100 last:border-0">
                           <td className="px-6 py-3">
                             <span
                               className={`inline-flex px-2 py-0.5 text-xs font-semibold rounded-full ${getStatusColor(row.status)}`}
@@ -355,10 +355,10 @@ export default function AdminReportsPage() {
                               {row.status}
                             </span>
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-900 text-center">
+                          <td className="px-6 py-3 text-sm text-ink-900 text-center">
                             {row.count}
                           </td>
-                          <td className="px-6 py-3 text-sm font-medium text-gray-900 text-right">
+                          <td className="px-6 py-3 text-sm font-medium text-ink-900 text-right">
                             {formatPrice(row.revenue)}
                           </td>
                         </tr>
@@ -371,25 +371,25 @@ export default function AdminReportsPage() {
 
             {/* Top Selling Products */}
             {report.topSellingProducts.length > 0 && (
-              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <div className="px-4 sm:px-6 py-4 border-b">
-                  <h2 className="text-base font-semibold text-gray-900">
+              <div className="bg-white rounded-2xl shadow-soft overflow-hidden">
+                <div className="px-4 sm:px-6 py-4 border-b border-surface-200">
+                  <h2 className="text-base font-semibold text-ink-950 font-display">
                     Top Selling Products
                   </h2>
                 </div>
                 {/* Mobile: card layout */}
-                <div className="sm:hidden divide-y divide-gray-100">
+                <div className="sm:hidden divide-y divide-surface-100">
                   {report.topSellingProducts.map((product, i) => (
                     <div key={i} className="px-4 py-3">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-medium text-gray-900 truncate mr-3">
+                        <span className="text-sm font-medium text-ink-900 truncate mr-3">
                           {product.name}
                         </span>
-                        <span className="text-sm font-semibold text-gray-900 whitespace-nowrap">
+                        <span className="text-sm font-semibold text-ink-900 whitespace-nowrap">
                           {formatPrice(product.totalRevenue)}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-ink-500">
                         {product.totalQuantity} unit{product.totalQuantity !== 1 ? 's' : ''} sold
                       </p>
                     </div>
@@ -399,28 +399,28 @@ export default function AdminReportsPage() {
                 <div className="hidden sm:block overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b bg-gray-50">
-                        <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                      <tr className="border-b bg-surface-100">
+                        <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                           Product
                         </th>
-                        <th className="text-center px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                        <th className="text-center px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                           Qty Sold
                         </th>
-                        <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                        <th className="text-right px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                           Revenue
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       {report.topSellingProducts.map((product, i) => (
-                        <tr key={i} className="border-b last:border-0">
-                          <td className="px-6 py-3 text-sm text-gray-900">
+                        <tr key={i} className="border-b border-surface-100 last:border-0">
+                          <td className="px-6 py-3 text-sm text-ink-900">
                             {product.name}
                           </td>
-                          <td className="px-6 py-3 text-sm text-gray-900 text-center">
+                          <td className="px-6 py-3 text-sm text-ink-900 text-center">
                             {product.totalQuantity}
                           </td>
-                          <td className="px-6 py-3 text-sm font-medium text-gray-900 text-right">
+                          <td className="px-6 py-3 text-sm font-medium text-ink-900 text-right">
                             {formatPrice(product.totalRevenue)}
                           </td>
                         </tr>
@@ -434,22 +434,22 @@ export default function AdminReportsPage() {
 
           {/* Orders List */}
           {report.orders.length > 0 && (
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-              <div className="px-4 sm:px-6 py-4 border-b flex items-center justify-between">
-                <h2 className="text-base font-semibold text-gray-900">
+            <div className="bg-white rounded-2xl shadow-soft overflow-hidden">
+              <div className="px-4 sm:px-6 py-4 border-b border-surface-200 flex items-center justify-between">
+                <h2 className="text-base font-semibold text-ink-950 font-display">
                   All Orders
                 </h2>
-                <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                <span className="text-xs text-ink-500 bg-surface-100 px-2.5 py-1 rounded-full">
                   {report.orders.length} order{report.orders.length !== 1 ? 's' : ''}
                 </span>
               </div>
 
               {/* Mobile: card layout */}
-              <div className="sm:hidden divide-y divide-gray-100">
+              <div className="sm:hidden divide-y divide-surface-100">
                 {report.orders.map((order) => (
                   <div key={order.id} className="px-4 py-3">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono text-gray-500">
+                      <span className="text-xs font-mono text-ink-500">
                         {order.id.slice(0, 8)}...
                       </span>
                       <span
@@ -460,16 +460,16 @@ export default function AdminReportsPage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-gray-900">
+                        <p className="text-sm font-medium text-ink-900">
                           {order.user
                             ? `${order.user.firstName} ${order.user.lastName}`
                             : 'N/A'}
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-ink-500">
                           {formatDate(order.createdAt)}
                         </p>
                       </div>
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-bold text-ink-950">
                         {formatPrice(order.total)}
                       </span>
                     </div>
@@ -481,20 +481,20 @@ export default function AdminReportsPage() {
               <div className="hidden sm:block overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b bg-gray-50">
-                      <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                    <tr className="border-b bg-surface-100">
+                      <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                         Order
                       </th>
-                      <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                      <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                         Customer
                       </th>
-                      <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                      <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                         Date
                       </th>
-                      <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                      <th className="text-left px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                         Status
                       </th>
-                      <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase">
+                      <th className="text-right px-6 py-3 text-xs font-medium text-ink-500 uppercase tracking-wider">
                         Total
                       </th>
                     </tr>
@@ -503,24 +503,24 @@ export default function AdminReportsPage() {
                     {report.orders.map((order) => (
                       <tr
                         key={order.id}
-                        className="border-b last:border-0 hover:bg-gray-50 transition-colors"
+                        className="border-b border-surface-100 last:border-0 hover:bg-surface-50 transition-colors"
                       >
-                        <td className="px-6 py-3 text-sm font-mono text-gray-600">
+                        <td className="px-6 py-3 text-sm font-mono text-ink-600">
                           {order.id.slice(0, 8)}...
                         </td>
                         <td className="px-6 py-3">
-                          <p className="text-sm text-gray-900">
+                          <p className="text-sm text-ink-900">
                             {order.user
                               ? `${order.user.firstName} ${order.user.lastName}`
                               : 'N/A'}
                           </p>
                           {order.user && (
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-ink-500">
                               {order.user.email}
                             </p>
                           )}
                         </td>
-                        <td className="px-6 py-3 text-sm text-gray-500">
+                        <td className="px-6 py-3 text-sm text-ink-500">
                           {formatDate(order.createdAt)}
                         </td>
                         <td className="px-6 py-3">
@@ -530,7 +530,7 @@ export default function AdminReportsPage() {
                             {order.status}
                           </span>
                         </td>
-                        <td className="px-6 py-3 text-sm font-semibold text-gray-900 text-right">
+                        <td className="px-6 py-3 text-sm font-semibold text-ink-950 text-right">
                           {formatPrice(order.total)}
                         </td>
                       </tr>
@@ -543,14 +543,14 @@ export default function AdminReportsPage() {
 
           {/* Empty state */}
           {report.orders.length === 0 && (
-            <div className="bg-white rounded-xl border border-gray-200 p-8 sm:p-12 text-center">
-              <div className="mx-auto w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-4">
-                <HiOutlineClipboardList className="w-6 h-6 text-gray-400" />
+            <div className="bg-white rounded-2xl shadow-soft p-8 sm:p-12 text-center">
+              <div className="mx-auto w-12 h-12 bg-surface-100 rounded-xl flex items-center justify-center mb-4">
+                <HiOutlineClipboardList className="w-6 h-6 text-ink-400" />
               </div>
-              <h3 className="text-base font-semibold text-gray-900 mb-1">
+              <h3 className="text-base font-semibold text-ink-900 font-display mb-1">
                 No orders found
               </h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-ink-500">
                 There are no orders in the selected date range
               </p>
             </div>

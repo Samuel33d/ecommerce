@@ -26,7 +26,7 @@ export function getStatusColor(status: string): string {
     DELIVERED: 'bg-emerald-100 text-emerald-800',
     CANCELLED: 'bg-red-100 text-red-800',
   };
-  return colors[status] || 'bg-gray-100 text-gray-800';
+  return colors[status] || 'bg-surface-100 text-ink-800';
 }
 
 export function truncate(str: string, length: number): string {

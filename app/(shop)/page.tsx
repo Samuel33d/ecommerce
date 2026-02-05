@@ -73,20 +73,22 @@ function HomeContent() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {!search && !categoryId && page === 1 && (
-        <div className="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-8 md:p-12 mb-8 text-white">
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">
-            Welcome to Store
-          </h1>
-          <p className="text-primary-100 text-lg mb-6 max-w-xl">
-            Discover premium products at unbeatable prices. Free shipping on
-            orders over $50.
-          </p>
-          <button
-            onClick={() => updateParams('featured', 'true')}
-            className="px-6 py-3 bg-white text-primary-700 rounded-lg font-semibold hover:bg-primary-50 transition-colors"
-          >
-            Shop Featured
-          </button>
+        <div className="bg-surface-950 noise-overlay rounded-2xl p-8 md:p-12 mb-8 text-white animate-fade-in">
+          <div className="relative z-10">
+            <h1 className="font-display text-3xl md:text-4xl font-bold mb-3">
+              Welcome to Store
+            </h1>
+            <p className="text-surface-300 text-lg mb-6 max-w-xl">
+              Discover premium products at unbeatable prices. Free shipping on
+              orders over $50.
+            </p>
+            <button
+              onClick={() => updateParams('featured', 'true')}
+              className="px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+            >
+              Shop Featured
+            </button>
+          </div>
         </div>
       )}
 
@@ -94,7 +96,7 @@ function HomeContent() {
         <select
           value={categoryId}
           onChange={(e) => updateParams('category', e.target.value)}
-          className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white"
+          className="px-3 py-2 text-sm border border-surface-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white text-ink-700"
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (
@@ -111,7 +113,7 @@ function HomeContent() {
             updateParams('sort', s);
             setTimeout(() => updateParams('order', o), 0);
           }}
-          className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white"
+          className="px-3 py-2 text-sm border border-surface-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white text-ink-700"
         >
           <option value="createdAt-desc">Newest First</option>
           <option value="createdAt-asc">Oldest First</option>
@@ -124,19 +126,19 @@ function HomeContent() {
         {(search || categoryId || featured) && (
           <button
             onClick={() => router.push('/')}
-            className="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50"
+            className="px-3 py-2 text-sm text-ink-600 hover:text-ink-900 border border-surface-300 rounded-xl hover:bg-surface-50"
           >
             Clear Filters
           </button>
         )}
 
-        <div className="sm:ml-auto text-sm text-gray-500 self-center">
+        <div className="sm:ml-auto text-sm text-ink-500 self-center">
           {meta.total} product{meta.total !== 1 ? 's' : ''} found
         </div>
       </div>
 
       {search && (
-        <div className="flex items-center gap-2 mb-4 text-gray-600">
+        <div className="flex items-center gap-2 mb-4 text-ink-600">
           <HiOutlineSearch className="w-4 h-4" />
           <span className="text-sm">
             Results for &quot;<strong>{search}</strong>&quot;
@@ -157,7 +159,7 @@ function HomeContent() {
           action={
             <button
               onClick={() => router.push('/')}
-              className="px-4 py-2 text-sm font-medium text-primary-600 hover:text-primary-700"
+              className="px-4 py-2 text-sm font-medium text-primary-700 hover:text-primary-800"
             >
               View all products
             </button>
@@ -180,8 +182,8 @@ function HomeContent() {
                     onClick={() => updateParams('page', p.toString())}
                     className={`px-3 py-2 text-sm rounded-lg ${
                       p === meta.page
-                        ? 'bg-primary-600 text-white'
-                        : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                        ? 'bg-ink-950 text-white'
+                        : 'bg-white border border-surface-300 text-ink-700 hover:bg-surface-50'
                     }`}
                   >
                     {p}

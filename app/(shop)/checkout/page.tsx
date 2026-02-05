@@ -84,23 +84,23 @@ export default function CheckoutPage() {
   if (!cart || cart.items.length === 0) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+        <h1 className="font-display text-2xl font-bold text-ink-900 mb-2">
           Your cart is empty
         </h1>
-        <p className="text-gray-500 mb-4">Add some products before checkout.</p>
+        <p className="text-ink-500 mb-4">Add some products before checkout.</p>
         <Button onClick={() => router.push('/')}>Continue Shopping</Button>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-2xl font-bold text-gray-900 mb-8">Checkout</h1>
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
+      <h1 className="font-display text-2xl font-bold text-ink-900 mb-8">Checkout</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="bg-white rounded-2xl shadow-soft p-6">
+            <h2 className="font-display text-lg font-semibold text-ink-900 mb-4">
               Shipping Information
             </h2>
             <div className="space-y-4">
@@ -147,14 +147,14 @@ export default function CheckoutPage() {
                 placeholder="10001"
               />
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-ink-700 mb-1">
                   Order Notes (optional)
                 </label>
                 <textarea
                   value={form.notes}
                   onChange={(e) => setForm({ ...form, notes: e.target.value })}
                   rows={3}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                  className="w-full rounded-xl border border-surface-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-100"
                   placeholder="Special delivery instructions..."
                 />
               </div>
@@ -168,30 +168,30 @@ export default function CheckoutPage() {
 
         {/* Order summary */}
         <div>
-          <div className="bg-white rounded-lg border border-gray-200 p-6 sticky top-24">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="bg-white rounded-2xl shadow-soft p-6 sticky top-24">
+            <h2 className="font-display text-lg font-semibold text-ink-900 mb-4">
               Order Summary
             </h2>
             <div className="space-y-3 mb-4">
               {cart.items.map((item) => (
                 <div key={item.id} className="flex justify-between text-sm">
-                  <span className="text-gray-600">
+                  <span className="text-ink-600">
                     {item.product.name} x{item.quantity}
                   </span>
-                  <span className="font-medium">
+                  <span className="font-medium text-ink-950">
                     {formatPrice(item.product.price * item.quantity)}
                   </span>
                 </div>
               ))}
             </div>
-            <div className="border-t pt-3">
+            <div className="border-t border-surface-200 pt-3">
               <div className="flex justify-between text-sm mb-1">
-                <span className="text-gray-500">Shipping</span>
+                <span className="text-ink-500">Shipping</span>
                 <span className="font-medium text-green-600">Free</span>
               </div>
               <div className="flex justify-between mt-2">
-                <span className="text-base font-semibold">Total</span>
-                <span className="text-base font-bold">
+                <span className="text-base font-semibold text-ink-900">Total</span>
+                <span className="text-base font-bold text-ink-950">
                   {formatPrice(cart.total)}
                 </span>
               </div>

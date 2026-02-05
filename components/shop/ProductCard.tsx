@@ -36,41 +36,43 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <Link href={`/product/${product.id}`}>
-      <div className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all duration-200">
-        <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
+      <div className="group bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-lifted transition-all duration-300 hover:-translate-y-1">
+        <div className="relative aspect-[4/3] bg-surface-100 overflow-hidden">
           <Image
             src={product.images[0] || 'https://placehold.co/600x400?text=No+Image'}
             alt={product.name}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
           {product.comparePrice && product.comparePrice > product.price && (
-            <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-md">
+            <span className="absolute top-3 left-3 bg-red-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
               -{Math.round(((product.comparePrice - product.price) / product.comparePrice) * 100)}%
             </span>
           )}
           {product.isFeatured && (
-            <span className="absolute top-3 right-3 bg-primary-600 text-white text-xs font-semibold px-2 py-1 rounded-md">
+            <span className="absolute top-3 right-3 bg-ink-950 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
               Featured
             </span>
           )}
         </div>
-        <div className="p-4">
-          <p className="text-xs text-gray-500 mb-1">{product.category?.name}</p>
-          <h3 className="text-sm font-semibold text-gray-900 mb-1 line-clamp-1">
+        <div className="p-5">
+          <p className="text-[11px] uppercase tracking-wider text-ink-400 mb-1.5">
+            {product.category?.name}
+          </p>
+          <h3 className="text-sm font-semibold text-ink-900 mb-1 line-clamp-1">
             {product.name}
           </h3>
-          <p className="text-xs text-gray-500 mb-3 line-clamp-2">
+          <p className="text-xs text-ink-500 mb-4 line-clamp-2 leading-relaxed">
             {product.description}
           </p>
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-lg font-bold text-gray-900">
+              <span className="text-lg font-bold text-ink-950">
                 {formatPrice(product.price)}
               </span>
               {product.comparePrice && product.comparePrice > product.price && (
-                <span className="ml-2 text-sm text-gray-400 line-through">
+                <span className="ml-2 text-sm text-ink-400 line-through">
                   {formatPrice(product.comparePrice)}
                 </span>
               )}
@@ -78,7 +80,7 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.stock > 0 ? (
               <button
                 onClick={handleAddToCart}
-                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
+                className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-white bg-ink-950 rounded-xl hover:bg-ink-800 transition-all duration-200 active:scale-95"
               >
                 <HiOutlineShoppingCart className="w-4 h-4" />
                 Add

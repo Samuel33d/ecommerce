@@ -65,7 +65,7 @@ export default function ProductDetailPage() {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Skeleton className="aspect-square rounded-xl" />
+          <Skeleton className="aspect-square rounded-2xl" />
           <div className="space-y-4">
             <Skeleton className="h-4 w-24" />
             <Skeleton className="h-8 w-3/4" />
@@ -81,10 +81,10 @@ export default function ProductDetailPage() {
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+        <h1 className="text-2xl font-display font-bold text-ink-900 mb-2">
           Product not found
         </h1>
-        <p className="text-gray-500 mb-4">
+        <p className="text-ink-500 mb-4">
           The product you&apos;re looking for doesn&apos;t exist.
         </p>
         <Button onClick={() => router.push('/')}>Back to Shop</Button>
@@ -93,10 +93,10 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
       <button
         onClick={() => router.back()}
-        className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 mb-6"
+        className="flex items-center gap-2 text-sm text-ink-500 hover:text-ink-800 mb-6 transition-colors"
       >
         <HiArrowLeft className="w-4 h-4" />
         Back
@@ -105,7 +105,7 @@ export default function ProductDetailPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {/* Images */}
         <div>
-          <div className="relative aspect-square bg-gray-100 rounded-xl overflow-hidden mb-4">
+          <div className="relative aspect-square bg-surface-100 rounded-2xl overflow-hidden mb-4">
             <Image
               src={
                 product.images[selectedImage] ||
@@ -127,7 +127,7 @@ export default function ProductDetailPage() {
                   className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 ${
                     selectedImage === idx
                       ? 'border-primary-600'
-                      : 'border-gray-200'
+                      : 'border-surface-200'
                   }`}
                 >
                   <Image
@@ -145,23 +145,23 @@ export default function ProductDetailPage() {
 
         {/* Details */}
         <div>
-          <p className="text-sm text-primary-600 font-medium mb-2">
+          <p className="uppercase tracking-wider text-[11px] text-primary-700 font-medium mb-2">
             {product.category?.name}
           </p>
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+          <h1 className="font-display text-2xl md:text-3xl font-bold text-ink-900 mb-3">
             {product.name}
           </h1>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-3xl font-bold text-gray-900">
+            <span className="text-3xl font-bold text-ink-950">
               {formatPrice(product.price)}
             </span>
             {product.comparePrice && product.comparePrice > product.price && (
               <>
-                <span className="text-lg text-gray-400 line-through">
+                <span className="text-lg text-ink-400 line-through">
                   {formatPrice(product.comparePrice)}
                 </span>
-                <span className="bg-red-100 text-red-700 text-sm font-semibold px-2 py-0.5 rounded">
+                <span className="bg-red-500 text-white text-sm font-semibold px-2 py-0.5 rounded">
                   -
                   {Math.round(
                     ((product.comparePrice - product.price) /
@@ -174,7 +174,7 @@ export default function ProductDetailPage() {
             )}
           </div>
 
-          <p className="text-gray-600 mb-6 leading-relaxed">
+          <p className="text-ink-600 mb-6 leading-relaxed">
             {product.description}
           </p>
 
@@ -187,7 +187,7 @@ export default function ProductDetailPage() {
                   : `Only ${product.stock} left in stock`}
               </span>
             ) : (
-              <span className="text-sm text-red-600 font-medium">
+              <span className="text-sm text-red-500 font-medium">
                 Out of Stock
               </span>
             )}
@@ -196,10 +196,10 @@ export default function ProductDetailPage() {
           {/* Quantity + Add to cart */}
           {product.stock > 0 && (
             <div className="flex items-center gap-4">
-              <div className="flex items-center border border-gray-300 rounded-lg">
+              <div className="flex items-center border border-surface-300 rounded-xl">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-2 text-gray-600 hover:text-gray-900"
+                  className="p-2 text-ink-600 hover:text-ink-900"
                 >
                   <HiMinus className="w-4 h-4" />
                 </button>
@@ -210,7 +210,7 @@ export default function ProductDetailPage() {
                   onClick={() =>
                     setQuantity(Math.min(product.stock, quantity + 1))
                   }
-                  className="p-2 text-gray-600 hover:text-gray-900"
+                  className="p-2 text-ink-600 hover:text-ink-900"
                 >
                   <HiPlus className="w-4 h-4" />
                 </button>

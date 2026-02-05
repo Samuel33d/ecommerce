@@ -48,15 +48,15 @@ export default function LoginPage() {
           <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-lg">S</span>
           </div>
-          <span className="text-2xl font-bold text-gray-900">Store</span>
+          <span className="text-2xl font-bold font-display text-ink-900">Store</span>
         </Link>
-        <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
-        <p className="text-gray-500 mt-1">Sign in to your account</p>
+        <h1 className="text-2xl font-bold font-display text-ink-900">Welcome back</h1>
+        <p className="text-ink-500 mt-1">Sign in to your account</p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm space-y-4"
+        className="bg-white rounded-2xl p-6 shadow-lifted space-y-4"
       >
         <Input
           label="Email"
@@ -83,11 +83,11 @@ export default function LoginPage() {
         </Button>
       </form>
 
-      <p className="text-center text-sm text-gray-500 mt-4">
+      <p className="text-center text-sm text-ink-500 mt-4">
         Don&apos;t have an account?{' '}
         <Link
           href="/register"
-          className="text-primary-600 hover:text-primary-700 font-medium"
+          className="text-primary-700 hover:text-primary-800 font-medium"
         >
           Sign up
         </Link>

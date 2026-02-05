@@ -14,12 +14,12 @@ export default function EmptyState({
   action,
 }: EmptyStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-16 px-4">
-      <div className="text-gray-300 mb-4">
+    <div className="flex flex-col items-center justify-center py-20 px-4">
+      <div className="text-surface-400 mb-5">
         {icon || <HiOutlineShoppingBag className="w-16 h-16" />}
       </div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">{title}</h3>
-      <p className="text-gray-500 text-sm text-center max-w-sm mb-4">
+      <h3 className="text-lg font-semibold text-ink-900 font-display mb-1.5">{title}</h3>
+      <p className="text-ink-500 text-sm text-center max-w-sm mb-5">
         {description}
       </p>
       {action}

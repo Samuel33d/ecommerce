@@ -65,7 +65,7 @@ export default function CartPage() {
         <Skeleton className="h-8 w-32 mb-6" />
         <div className="space-y-4">
           {Array.from({ length: 3 }).map((_, i) => (
-            <Skeleton key={i} className="h-24 w-full rounded-lg" />
+            <Skeleton key={i} className="h-24 w-full rounded-2xl" />
           ))}
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function CartPage() {
   if (!cart || cart.items.length === 0) {
     return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-6">Shopping Cart</h1>
+        <h1 className="font-display text-2xl font-bold text-ink-900 mb-6">Shopping Cart</h1>
         <EmptyState
           icon={<HiOutlineShoppingCart className="w-16 h-16" />}
           title="Your cart is empty"
@@ -91,8 +91,8 @@ export default function CartPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
+      <h1 className="font-display text-2xl font-bold text-ink-900 mb-6">
         Shopping Cart ({cart.items.length} item{cart.items.length !== 1 ? 's' : ''})
       </h1>
 
@@ -102,9 +102,9 @@ export default function CartPage() {
           {cart.items.map((item) => (
             <div
               key={item.id}
-              className="flex gap-4 bg-white rounded-lg border border-gray-200 p-4"
+              className="flex gap-4 bg-white rounded-2xl shadow-soft p-4"
             >
-              <div className="relative w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+              <div className="relative w-24 h-24 bg-surface-100 rounded-xl overflow-hidden flex-shrink-0">
                 <Image
                   src={
                     item.product.images[0] ||
@@ -119,18 +119,18 @@ export default function CartPage() {
               <div className="flex-1 min-w-0">
                 <Link
                   href={`/product/${item.product.id}`}
-                  className="text-sm font-semibold text-gray-900 hover:text-primary-600 line-clamp-1"
+                  className="text-sm font-semibold text-ink-900 hover:text-primary-700 line-clamp-1 transition-colors"
                 >
                   {item.product.name}
                 </Link>
-                <p className="text-xs text-gray-500 mt-0.5">
+                <p className="text-xs text-ink-500 mt-0.5">
                   {item.product.category?.name}
                 </p>
-                <p className="text-sm font-bold text-gray-900 mt-1">
+                <p className="text-sm font-bold text-ink-900 mt-1">
                   {formatPrice(item.product.price)}
                 </p>
                 <div className="flex items-center justify-between mt-2">
-                  <div className="flex items-center border border-gray-300 rounded-md">
+                  <div className="flex items-center border border-surface-300 rounded-xl">
                     <button
                       onClick={() =>
                         handleUpdateQuantity(
@@ -139,7 +139,7 @@ export default function CartPage() {
                         )
                       }
                       disabled={updating === item.id || item.quantity <= 1}
-                      className="p-1.5 text-gray-600 hover:text-gray-900 disabled:opacity-50"
+                      className="p-1.5 text-ink-600 hover:text-ink-900 disabled:opacity-50"
                     >
                       <HiMinus className="w-3 h-3" />
                     </button>
@@ -154,7 +154,7 @@ export default function CartPage() {
                         updating === item.id ||
                         item.quantity >= item.product.stock
                       }
-                      className="p-1.5 text-gray-600 hover:text-gray-900 disabled:opacity-50"
+                      className="p-1.5 text-ink-600 hover:text-ink-900 disabled:opacity-50"
                     >
                       <HiPlus className="w-3 h-3" />
                     </button>
@@ -162,14 +162,14 @@ export default function CartPage() {
                   <button
                     onClick={() => handleRemoveItem(item.id)}
                     disabled={updating === item.id}
-                    className="p-1.5 text-gray-400 hover:text-red-500"
+                    className="p-1.5 text-ink-400 hover:text-red-500"
                   >
                     <HiOutlineTrash className="w-4 h-4" />
                   </button>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-sm font-bold text-gray-900">
+                <p className="text-sm font-bold text-ink-950">
                   {formatPrice(item.product.price * item.quantity)}
                 </p>
               </div>
@@ -179,24 +179,24 @@ export default function CartPage() {
 
         {/* Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-lg border border-gray-200 p-6 sticky top-24">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="bg-white rounded-2xl shadow-soft p-6 sticky top-24">
+            <h2 className="font-display text-lg font-semibold text-ink-900 mb-4">
               Order Summary
             </h2>
             <div className="space-y-2 mb-4">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Subtotal</span>
-                <span className="font-medium">{formatPrice(cart.total)}</span>
+                <span className="text-ink-500">Subtotal</span>
+                <span className="font-medium text-ink-950">{formatPrice(cart.total)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Shipping</span>
+                <span className="text-ink-500">Shipping</span>
                 <span className="font-medium text-green-600">Free</span>
               </div>
             </div>
-            <div className="border-t pt-4 mb-6">
+            <div className="border-t border-surface-200 pt-4 mb-6">
               <div className="flex justify-between">
-                <span className="text-base font-semibold">Total</span>
-                <span className="text-base font-bold">
+                <span className="text-base font-semibold text-ink-900">Total</span>
+                <span className="text-base font-bold text-ink-950">
                   {formatPrice(cart.total)}
                 </span>
               </div>
@@ -209,7 +209,7 @@ export default function CartPage() {
               Proceed to Checkout
             </Button>
             <Link href="/">
-              <p className="text-center text-sm text-primary-600 hover:text-primary-700 mt-3">
+              <p className="text-center text-sm text-primary-700 hover:text-primary-800 mt-3 transition-colors">
                 Continue Shopping
               </p>
             </Link>
