@@ -7,6 +7,7 @@ import {
   HiOutlineCube,
   HiOutlineClipboardList,
   HiOutlineUsers,
+  HiOutlineDocumentReport,
   HiOutlineArrowLeft,
 } from 'react-icons/hi';
 import { cn } from '@/lib/utils';
@@ -16,6 +17,7 @@ const navItems = [
   { href: '/admin/products', label: 'Products', icon: HiOutlineCube },
   { href: '/admin/orders', label: 'Orders', icon: HiOutlineClipboardList },
   { href: '/admin/customers', label: 'Customers', icon: HiOutlineUsers },
+  { href: '/admin/reports', label: 'Reports', icon: HiOutlineDocumentReport },
 ];
 
 export default function AdminSidebar() {

@@ -114,3 +114,30 @@ export interface AuthResponse {
   accessToken: string;
   refreshToken: string;
 }
+
+export interface ReportSummary {
+  totalRevenue: number;
+  totalOrders: number;
+  avgOrderValue: number;
+  startDate: string;
+  endDate: string;
+}
+
+export interface StatusBreakdown {
+  status: OrderStatus;
+  count: number;
+  revenue: number;
+}
+
+export interface TopProduct {
+  name: string;
+  totalQuantity: number;
+  totalRevenue: number;
+}
+
+export interface ReportData {
+  summary: ReportSummary;
+  ordersByStatus: StatusBreakdown[];
+  topSellingProducts: TopProduct[];
+  orders: Order[];
+}
