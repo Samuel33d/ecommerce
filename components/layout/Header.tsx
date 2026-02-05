@@ -46,7 +46,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-surface-950 text-surface-100">
+    <header className="sticky top-0 z-40 bg-surface-950/80 backdrop-blur-lg text-surface-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -147,7 +147,7 @@ export default function Header() {
             ) : (
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-surface-950 bg-white rounded-xl hover:bg-surface-100 transition-all shadow-soft"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-primary-600 text-white rounded-xl hover:bg-primary-700 hover:shadow-glow transition-all shadow-soft"
               >
                 Sign In
               </Link>

@@ -65,17 +65,17 @@ export default function RegisterPage() {
           <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-lg">S</span>
           </div>
-          <span className="text-2xl font-bold font-display text-ink-900">Store</span>
+          <span className="text-2xl font-bold font-display text-white">Store</span>
         </Link>
-        <h1 className="text-2xl font-bold font-display text-ink-900">Create an account</h1>
-        <p className="text-ink-500 mt-1">
+        <h1 className="text-2xl font-bold font-display text-white">Create an account</h1>
+        <p className="text-surface-400 mt-1">
           Join us and start shopping
         </p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white rounded-2xl p-6 shadow-lifted space-y-4"
+        className="glass-light rounded-2xl p-6 shadow-lifted space-y-4"
       >
         <div className="grid grid-cols-2 gap-4">
           <Input
@@ -132,11 +132,11 @@ export default function RegisterPage() {
         </Button>
       </form>
 
-      <p className="text-center text-sm text-ink-500 mt-4">
+      <p className="text-center text-sm text-surface-400 mt-4">
         Already have an account?{' '}
         <Link
           href="/login"
-          className="text-primary-700 hover:text-primary-800 font-medium"
+          className="text-primary-400 hover:text-primary-300 font-medium"
         >
           Sign in
         </Link>

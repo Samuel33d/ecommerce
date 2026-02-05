@@ -50,7 +50,7 @@ export default function AdminSidebar() {
                 className={cn(
                   'flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl transition-all duration-200',
                   isActive
-                    ? 'bg-ink-950 text-white font-medium shadow-soft'
+                    ? 'bg-primary-600 text-white font-medium shadow-soft'
                     : 'text-ink-600 hover:bg-surface-100 hover:text-ink-900',
                 )}
               >

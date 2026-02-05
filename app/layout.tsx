@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, DM_Sans } from 'next/font/google';
+import { Space_Grotesk, DM_Sans } from 'next/font/google';
 import './globals.css';
 import Providers from './providers';
 
-const playfair = Playfair_Display({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <body className={dmSans.className}>
         <Providers>{children}</Providers>
       </body>

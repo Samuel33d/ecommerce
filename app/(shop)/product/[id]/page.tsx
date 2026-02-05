@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { api } from '@/lib/api';
 import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/hooks/useAuth';
@@ -93,7 +94,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <button
         onClick={() => router.back()}
         className="flex items-center gap-2 text-sm text-ink-500 hover:text-ink-800 mb-6 transition-colors"
@@ -104,7 +105,11 @@ export default function ProductDetailPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {/* Images */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="relative aspect-square bg-surface-100 rounded-2xl overflow-hidden mb-4">
             <Image
               src={
@@ -141,10 +146,14 @@ export default function ProductDetailPage() {
               ))}
             </div>
           )}
-        </div>
+        </motion.div>
 
         {/* Details */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           <p className="uppercase tracking-wider text-[11px] text-primary-700 font-medium mb-2">
             {product.category?.name}
           </p>
@@ -226,7 +235,7 @@ export default function ProductDetailPage() {
               </Button>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

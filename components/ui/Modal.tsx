@@ -34,7 +34,7 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
         if (e.target === overlayRef.current) onClose();
       }}
     >
-      <div className="bg-white rounded-2xl shadow-dramatic max-w-lg w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+      <div className="bg-white rounded-2xl shadow-dramatic max-w-lg w-full max-h-[90vh] overflow-y-auto animate-scale-in border border-primary-100">
         <div className="flex items-center justify-between p-5 border-b border-surface-200">
           <h2 className="text-lg font-semibold text-ink-950 font-display">{title}</h2>
           <button

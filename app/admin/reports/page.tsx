@@ -148,7 +148,7 @@ export default function AdminReportsPage() {
               className={cn(
                 'px-4 py-2 text-sm rounded-xl border transition-all duration-200 disabled:opacity-50',
                 activePreset === preset.label
-                  ? 'bg-ink-950 text-white border-ink-950 shadow-soft'
+                  ? 'bg-primary-600 text-white border-primary-600 shadow-glow'
                   : 'border-surface-300 text-ink-700 hover:bg-surface-100 hover:border-surface-400',
               )}
             >

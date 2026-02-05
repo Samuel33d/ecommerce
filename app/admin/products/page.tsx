@@ -295,7 +295,7 @@ export default function AdminProductsPage() {
                   onClick={() => fetchProducts(p)}
                   className={`px-3 py-1.5 text-sm rounded-lg ${
                     p === meta.page
-                      ? 'bg-ink-950 text-white'
+                      ? 'bg-primary-600 text-white'
                       : 'bg-surface-100 text-ink-600 hover:bg-surface-200'
                   }`}
                 >
