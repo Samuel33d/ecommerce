@@ -33,7 +33,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-surface-50">
+    <div className="min-h-screen bg-surface-50 overflow-x-hidden">
       <Header />
       <AdminSidebar />
       <div className="lg:pl-64">
